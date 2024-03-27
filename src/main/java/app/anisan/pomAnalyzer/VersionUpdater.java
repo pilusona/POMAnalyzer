@@ -9,7 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-public class VersionUpdater {
+public final class VersionUpdater {
 	public static void updateLatestVersion(POMDependencyObject a_POMDependencyObject) throws Throwable {
 		CloseableHttpClient		httpClient	= HttpClients.custom().setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
 				.build();

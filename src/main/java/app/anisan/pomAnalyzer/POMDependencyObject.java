@@ -9,7 +9,8 @@ public class POMDependencyObject {
 	private String				artiefectID		= null;
 	private String				latestVersion	= null;
 	private String				currentVersion	= null;
-	private List<Vulnerability>	vulnerabilities	= new ArrayList<Vulnerability>();
+	private List<Vulnerability>	directVulnerabilities	= new ArrayList<Vulnerability>();
+	private List<Vulnerability>	dependentVulnerabilities	= new ArrayList<Vulnerability>();
 
 	public String getGroupID() {
 		return groupID;
@@ -54,14 +55,26 @@ public class POMDependencyObject {
 		return sb.toString();
 	}
 
-	public List<Vulnerability> getVulnerabilities() {
-		if(vulnerabilities == null) {
-			vulnerabilities	= new ArrayList<Vulnerability>();
+	public List<Vulnerability> getDirectVulnerabilities() {
+		if(directVulnerabilities == null) {
+			directVulnerabilities	= new ArrayList<Vulnerability>();
 		}
-		return vulnerabilities;
+		return directVulnerabilities;
 	}
 
-	public void setVulnerabilities(List<Vulnerability> a_vulnerabilities) {
-		vulnerabilities = a_vulnerabilities;
+	public void setDirectVulnerabilities(List<Vulnerability> a_vulnerabilities) {
+		directVulnerabilities = a_vulnerabilities;
+	}
+	
+
+	public List<Vulnerability> getDependentVulnerabilities() {
+		if(dependentVulnerabilities == null) {
+			dependentVulnerabilities	= new ArrayList<Vulnerability>();
+		}
+		return dependentVulnerabilities;
+	}
+
+	public void setDependentVulnerabilities(List<Vulnerability> a_vulnerabilities) {
+		dependentVulnerabilities = a_vulnerabilities;
 	}
 }

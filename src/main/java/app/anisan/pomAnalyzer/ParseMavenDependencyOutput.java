@@ -6,12 +6,12 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParseMavenDependencyOutput {
+public final class ParseMavenDependencyOutput {
+	
 	public static void main(String[] args) throws Throwable {
 		System.out.println("ParseMavenDependencyOutput.main()\n");
-		ParseMavenDependencyOutput parseMavenDependencyOutput = new ParseMavenDependencyOutput();
 		
-		List<POMDependencyObject> dependencies = parseMavenDependencyOutput.getPOMDependencies("D:\\eclipse-workspace\\pomAnalyzer\\dependency.txt");
+		List<POMDependencyObject> dependencies = ParseMavenDependencyOutput.getPOMDependencies("D:\\eclipse-workspace\\pomAnalyzer\\dependency.txt");
 		
 		for(POMDependencyObject pomDependency : dependencies) {
 			VersionUpdater.updateLatestVersion(pomDependency);
@@ -24,7 +24,7 @@ public class ParseMavenDependencyOutput {
 		System.out.println("\n\n"+dependencies);
 	}
 	
-	private List<POMDependencyObject> getPOMDependencies(String a_strFilePath) throws Throwable{
+	public static List<POMDependencyObject> getPOMDependencies(String a_strFilePath) throws Throwable{
 		List<POMDependencyObject> returnObject = new ArrayList<POMDependencyObject>();
 		BufferedReader reader = new BufferedReader(new FileReader(a_strFilePath));
 		String line = reader.readLine();
@@ -56,7 +56,7 @@ public class ParseMavenDependencyOutput {
 		return returnObject;
 	}
 	
-	private POMDependencyObject getPOMDependencyObject(String a_strLine) {
+	private static POMDependencyObject getPOMDependencyObject(String a_strLine) {
 		POMDependencyObject pomDependency = new POMDependencyObject();
 		String[] strParts = a_strLine.split(":");
 		pomDependency.setGroupID(strParts[0]);
